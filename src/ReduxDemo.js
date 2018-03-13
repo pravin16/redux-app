@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import {createStore} from 'redux';
+import Button from './components/basics/Button'
 
 class ReduxDemo extends Component {
+
+    handleClick() {
+        //store.dispatch({ type : 'GREENATTACK', payload: 'Hulk' });
+    }
 
     render() {
 
@@ -10,6 +15,8 @@ class ReduxDemo extends Component {
         const reducer = (state = 0, action) => {
             switch(action.type){
                 case 'ATTACK':
+                    return action.payload;
+                case 'GREENATTACK':
                     return action.payload;
                 default:
                     return state;
@@ -30,6 +37,7 @@ class ReduxDemo extends Component {
     
         return (
             <div>
+                <Button onClick={this.handleClick.bind(this)} />
                 This is test {store.getState()}
             </div>
         );
